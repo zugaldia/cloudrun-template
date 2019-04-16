@@ -19,4 +19,5 @@ FROM adoptopenjdk/openjdk8:jdk8u202-b08-alpine-slim
 COPY --from=builder /home/gradle/build/libs/gradle-0.0.1-SNAPSHOT.jar /template.jar
 
 # Run the web service on container startup.
-CMD ["java","-Djava.security.egd=file:/dev/./urandom","-Dserver.port=${PORT}","-jar","/template.jar"]
+# https://developers.redhat.com/blog/2017/03/14/java-inside-docker/
+CMD ["java","-XX:+PrintFlagsFinal","-XX:+UnlockExperimentalVMOptions","-XX:+UseCGroupMemoryLimitForHeap","-Djava.security.egd=file:/dev/./urandom","-Dserver.port=${PORT}","-jar","/template.jar"]

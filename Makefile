@@ -3,8 +3,8 @@ build-image:
 
 run-image:
 	gcloud auth configure-docker
-	docker run -p 8080:8080 -e PORT=8080 gcr.io/com-zugaldia-runtemplate/template
+	docker run -m 512M -p 8080:8080 -e PORT=8080 gcr.io/com-zugaldia-runtemplate/template
 
 deploy-image:
 	gcloud beta run deploy --image gcr.io/com-zugaldia-runtemplate/template \
-		--memory 1G
+		--memory 512M
