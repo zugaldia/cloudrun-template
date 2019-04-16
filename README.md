@@ -22,7 +22,7 @@ During development, you probably want to use IntelliJ IDEA. Simply open the proj
 The `Makefile` automates the basic tasks you need from this project:
 - `make build-image`: Builds the Docker image using GCP Cloud Build.
 - `make run-image`: Runs the Docker image locally (for testing purposes).
-- `make deploy-image`: Deploys the image. One important thing is that we increment the standard memory to 1G, otherwise, your Spring project will typically run out of memory.
+- `make deploy-image`: Deploys the image. We're setting the memor to 512M instead of the default 256M (otherwise, the container will fail to deploy despite using `-XX:+UseCGroupMemoryLimitForHeap`).
 
 ## Endpoints
 
